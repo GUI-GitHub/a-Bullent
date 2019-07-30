@@ -131,8 +131,6 @@ if __name__=="__main__":
         gtime.tick(150)
         screen.fill((0,0,0))
 
-
-        
         for i in event.get():
             
             if i.type==QUIT:
