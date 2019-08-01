@@ -35,8 +35,8 @@ class Ball():
             dx=(ball[0]+8-bx)
             
             #dy=ball[1]+8-340
-            r=15
-            d=0.25
+            r=30
+            d=0.2
             
             #print(dx)
             self.speed=[dx*d,-sqrt(abs(r**2-dx**2))*d]
@@ -78,7 +78,7 @@ class BallGroup():
             screen.blit(ball.image,ball.rect)
 
             #掉入后删除ball
-            if ball.rect[1]>400-16 or ball.rect[0]<=-16 or ball.rect[0]>=WIDTH:# or ball.rect[1]<=-16:
+            if ball.rect[1]>400-16 or ball.rect[0]<=-16 or ball.rect[0]>=WIDTH or ball.rect[1]<=-8:
                 self.balls.remove(ball)
 
 class Block():
@@ -106,7 +106,7 @@ class Blocks():
         self.blocks=blocks
     def draw(self):
         for block in self.blocks:
-            if block.type:
+            if block.type>0:
                 block.draw()
             else:
                 self.blocks.remove(block)
@@ -156,7 +156,7 @@ if __name__=="__main__":
                 #board set
                 bx=i.pos[0]
                 
-            if i.type==MOUSEBUTTONDOWN:
+            if i.type==MOUSEBUTTONDOWN or (i.type==KEYDOWN and i.key==K_SPACE) :
                 ballg.add(Ball((0,-5),pos=(bx-8,350-16)))
 
         rect(screen,bx,350)
