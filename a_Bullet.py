@@ -1,5 +1,6 @@
 from pygame import *
 import random
+from math import *
 
 #define
 
@@ -27,11 +28,19 @@ class Ball():
             self.speed[1]=-self.speed[1]
         
         #碰板反弹
-        if (bx-30<self.rect[0]+8<bx+30)and(self.rect[1]+16>350):
+        if (bx-30<self.rect[0]+8<bx+30)and(362>self.rect[1]>350-16):
             #print("in the right range")
             #board=(bx,350)
             ball=self.rect[0:2]
-            self.speed=[-(bx-ball[0]-8)*0.5,-(350-ball[1]-8)*0.5]
+            dx=(ball[0]+8-bx)
+            
+            #dy=ball[1]+8-340
+            r=15
+            d=0.25
+            
+            #print(dx)
+            self.speed=[dx*d,-sqrt(abs(r**2-dx**2))*d]
+            print(sqrt(self.speed[0]**2+self.speed[1]**2))
 
         #碰砖反弹
         for blk in blocks.blocks:
@@ -39,14 +48,15 @@ class Ball():
 
             ballpos=self.rect[0:2]
             rball=(ballpos[0]+8,ballpos[1]+8)
-            #  碰右壁                       碰左壁                       碰下壁                       碰上壁
-            if ballpos[0]<blk.pos[0]+blk.size[0] and ballpos[0]+16>blk.pos[0] and ballpos[1]<blk.pos[1]+blk.size[1] and ballpos[0]+16>blk.pos[0]:
+            #  碰右壁                                碰左壁                       碰下壁                                碰上壁
+            if ballpos[0]<blk.pos[0]+blk.size[0] and ballpos[0]+16>blk.pos[0] and ballpos[1]<blk.pos[1]+blk.size[1] and ballpos[1]+16>blk.pos[1]:
                 if not rball[0]==rblk[0]:
                     self.speed[0]=-self.speed[0]
                 if not rball[1]==rblk[1]:
                     self.speed[1]=-self.speed[1]
 
                 #if not blk.type==4:
+                print(ballpos,blk)
                 blk.type=blk.type-1
                     #blocks.blocks.remove(blk)
                 break
@@ -68,7 +78,7 @@ class BallGroup():
             screen.blit(ball.image,ball.rect)
 
             #掉入后删除ball
-            if ball.rect[1]>355-16 or ball.rect[0]<=-16 or ball.rect[0]>=WIDTH:# or ball.rect[1]<=-16:
+            if ball.rect[1]>400-16 or ball.rect[0]<=-16 or ball.rect[0]>=WIDTH:# or ball.rect[1]<=-16:
                 self.balls.remove(ball)
 
 class Block():
@@ -83,10 +93,13 @@ class Block():
             self.color=(255,255,0)
         elif self.type==3:
             self.color=(255,255,255)
+
         else:
             self.color=(127,127,127)
         draw.rect(screen,self.color,self.pos+self.size,0)
         #print("draw")
+    def __repr__(self):
+        return "pos:%s,color:%s,size:%s,type:%s"%(self.pos,self.color,self.size,self.type)
 
 class Blocks():
     def __init__(self,blocks=[]):
@@ -104,7 +117,7 @@ class Blocks():
         if mode=="rect":
             for i in range(kw["height"]):
                 for j in range(kw["width"]):
-                    blocks.append(Block((j*20,i*20),random.randint(0,4)))
+                    blocks.append(Block((j*20,i*20),random.randint(0,4),size=(16,16)))
         #print(blocks)
         return Blocks(blocks)
 
@@ -125,11 +138,15 @@ if __name__=="__main__":
     bx=150
     ballg=BallGroup()
     blocks=Blocks.generator("rect",height=10,width=16)
+    #blocks=Blocks([Block((150,150),1,(30,30)),Block((150,110),1,(30,30))])
 
+    
     while 1:
 
         gtime.tick(150)
         screen.fill((0,0,0))
+
+        #
 
         for i in event.get():
             
