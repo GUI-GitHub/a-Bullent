@@ -1,4 +1,5 @@
 from pygame import *
+import pygame.freetype
 import random
 from math import *
 
@@ -12,6 +13,9 @@ init()
 screen=display.set_mode([WIDTH,HEIGHT],0,32)
 display.set_caption("game")
 screen.fill((0,0,0))
+f1=pygame.freetype.Font("C:\\Windows\\Fonts\\comic.ttf",20)
+
+
 
 class Ball():
     def __init__(self,speed,pos=(0,0)):
@@ -56,7 +60,7 @@ class Ball():
                     self.speed[1]=-self.speed[1]
 
                 #if not blk.type==4:
-                print(ballpos,blk)
+                #print(ballpos,blk)
                 blk.type=blk.type-1
                     #blocks.blocks.remove(blk)
                 break
@@ -96,7 +100,9 @@ class Block():
 
         else:
             self.color=(127,127,127)
+        
         draw.rect(screen,self.color,self.pos+self.size,0)
+        f1.render_to(screen,(self.pos[0]+3.5,self.pos[1]),str(self.type),fgcolor=(0,0,0))
         #print("draw")
     def __repr__(self):
         return "pos:%s,color:%s,size:%s,type:%s"%(self.pos,self.color,self.size,self.type)
@@ -163,7 +169,7 @@ if __name__=="__main__":
         
         blocks.draw()        
         ballg.move(bx,blocks)
-        display.flip()
+        #display.flip()
         display.update()
 
 
