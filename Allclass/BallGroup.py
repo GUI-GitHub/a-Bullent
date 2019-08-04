@@ -14,5 +14,5 @@ class BallGroup():
             screen.blit(ball.image, ball.rect)
 
             # 掉入后删除ball
-            if ball.rect[1] > 400 - 16 or ball.rect[0] <= -16 or ball.rect[0] >= WIDTH or ball.rect[1] <= -8:
+            if ball.rect[1] > 400 - ball.rect[3] or ball.rect[0] <= -ball.rect[2] or ball.rect[0] >= WIDTH or ball.rect[1] <= -ball.rect[1]*0.5:
                 self.balls.remove(ball)

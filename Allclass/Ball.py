@@ -21,7 +21,7 @@ class Ball():
 
         # 碰板反弹
         if (bx - 30 < self.rect.centerx < bx + 30) and (362 > self.rect[1] > 350 - self.rect[3]):
-            self.speed = (math.Vector2(self.rect.centerx, self.rect.centery)-math.Vector2(bx, 340)).normalize()*3
+            self.speed = (math.Vector2(self.rect.centerx, self.rect.centery)-math.Vector2(bx, 380)).normalize()*3
             print(sqrt(self.speed[0] ** 2 + self.speed[1] ** 2))
             print(self.rect.centerx-bx)
 
@@ -41,7 +41,7 @@ class Ball():
 
 
                 # if not blk.type==4:
-                print(ballpos, blk)
+                #print(ballpos, blk)
                 blk.type = blk.type - 1
                 # blocks.blocks.remove(blk)
                 break

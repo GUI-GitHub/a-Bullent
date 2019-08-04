@@ -3,6 +3,10 @@ from Allclass.Block import Block
 class Blocks():
     def __init__(self,blocks=[]):
         self.blocks=blocks
+
+
+    def adds(self,blocks):
+        self.blocks+=blocks
     def draw(self):
         for block in self.blocks:
             if block.type>0:
