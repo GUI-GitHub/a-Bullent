@@ -7,7 +7,7 @@ def run():
     gtime=time.Clock()#游戏时间设置
     bx = 150#设置开始时板的位置
     ballg = BallGroup.BallGroup()
-    blocks = Blocks.Blocks.generator("rect", height=10, width=20,dpos=(0,50))#方块生成
+    blocks = Blocks.Blocks.generator("rect", height=2, width=20,dpos=(0,50))#方块生成
     #blocks.adds(Blocks.Blocks.generator("rect", height=2, width=20,dpos=(0,370)))
     while 1:
         gtime.tick(t)
@@ -29,7 +29,8 @@ def run():
         Rect.Rect.rect(screen, bx, 350)#画出板
         blocks.draw()#画出方块
         ballg.move(bx, blocks)#移动所有小球并画出
-
+        if len(blocks.blocks)==0:
+            win.play()
         display.flip()
         display.update()
 

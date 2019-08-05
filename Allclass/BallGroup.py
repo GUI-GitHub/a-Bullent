@@ -15,5 +15,6 @@ class BallGroup():
             screen.blit(ball.image, ball.rect)
             #f1.render_to(screen, ball.rect[:2], str(ball.speed),fgcolor=(255,255,255))
             # 掉入后删除小球
-            if ball.rect[1] > 400 - ball.rect[3] or ball.rect[0] <= -ball.rect[2] or ball.rect[0] >= WIDTH or ball.rect[1] <= -ball.rect[1]*0.5:
+            if ball.rect.y > HEIGHT - ball.rect.h or ball.rect.x <= -ball.rect.w or ball.rect.x >= WIDTH:
                 self.balls.remove(ball)
+                los.play()

@@ -1,6 +1,8 @@
 from setting.settings import  *
 from Allclass.Block import Block
-class Blocks():
+
+
+class Blocks:
     def __init__(self, blocks=[]):
         self.blocks = blocks
 
@@ -9,7 +11,7 @@ class Blocks():
 
     def draw(self):
         for block in self.blocks:
-            if block.type > 0:
+            if block.count > 0:
                 block.draw()
             else:
                 self.blocks.remove(block)
