@@ -10,10 +10,8 @@ def run():
     blocks = Blocks.Blocks.generator("rect", height=10, width=20,dpos=(0,50))#方块生成
     #blocks.adds(Blocks.Blocks.generator("rect", height=2, width=20,dpos=(0,370)))
     while 1:
-
         gtime.tick(t)
-        screen.fill((0,0,0))
-
+        screen.fill((0, 0, 0))
         for i in event.get():
             if i.type == QUIT:
                 exit(0)
@@ -21,12 +19,12 @@ def run():
                 #鼠标控制 板
                 if shooted:
                     bx = i.pos[0]
-            if i.type == MOUSEBUTTONDOWN or (i.type == KEYDOWN and i.key==K_SPACE):
+            if i.type == MOUSEBUTTONDOWN or (i.type == KEYDOWN and i.key == K_SPACE):
                 #发射小球
                 if not shooted:
-                    a= (math.Vector2(i.pos)-math.Vector2(150,350)).normalize()*bv
+                    a = (math.Vector2(i.pos)-math.Vector2(150,350)).normalize()*bv
                     ballg.add(Ball.Ball(tuple(a),pos=(bx-4,350-16)))
-                    shooted=1
+                    shooted = 1
 
         Rect.Rect.rect(screen, bx, 350)#画出板
         blocks.draw()#画出方块

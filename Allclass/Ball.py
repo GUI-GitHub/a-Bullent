@@ -16,14 +16,14 @@ class Ball():
             self.speed[0] = -self.speed[0]
         if self.rect[1] <= 0 + 1:
             self.speed[1] = -self.speed[1]
-
+        """
         # 碰板反弹
         if (bx - 30 <= self.rect.centerx <= bx + 30) and (362 >= self.rect.y >= 350 - self.rect[3]):
             self.speed = (math.Vector2(self.rect.centerx, self.rect.centery)-math.Vector2(bx, 360)).normalize()*bv
             print(sqrt(self.speed[0] ** 2 + self.speed[1] ** 2))
             print(int(self.speed[0]), int(self.speed[1]))
             #self.speed[1] *= -1
-
+        """
         # 碰方块反弹
         for blk in blocks.blocks:
             rblk = (blk.pos[0]+blk.size[0] * 0.5, blk.pos[1] + blk.size[1] * 0.5)
@@ -47,4 +47,5 @@ class Ball():
                 break
 
 
-        self.rect = self.rect.move(self.speed)
+        self.rect.x += self.speed[0]
+        self.rect.y += self.speed[1]

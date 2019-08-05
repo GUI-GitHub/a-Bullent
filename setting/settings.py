@@ -1,5 +1,6 @@
 from pygame import *
 import pygame.freetype
+import os
 import random
 from math import *
 
@@ -13,7 +14,7 @@ t = 60#每秒执行次数
 
 #init
 init()
-screen=display.set_mode([WIDTH,HEIGHT],0,32)
+screen = display.set_mode([WIDTH, HEIGHT], 0, 32)
 display.set_caption("game")
-screen.fill((0,0,0))
+screen.fill((0, 0, 0))
 f1 = pygame.freetype.Font("C:\\Windows\\Fonts\\mvboli.ttf", 10)
