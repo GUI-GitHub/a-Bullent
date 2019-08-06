@@ -14,7 +14,7 @@ class Ball:
         self.collide_wx = False
         self.collide_wy = False
 
-    def move(self, bx, blocks, props):
+    def move(self, bx, blocks):
         self.rect.x += self.speed[0]
 
         # 碰壁反弹
@@ -39,8 +39,7 @@ class Ball:
                 if (self.rect.x <= blk.pos[0] + blk.size[0] or self.rect.x + self.rect.w >= blk.pos[0])and not self.collide_b:#and not self.inb:
                     #碰上下壁
                     self.speed[1] = -self.speed[1]
-                if blk.type:
-                    props.add(Prop(blk.type, blk.pos))
+
 
                 #  if not blk.type==4:
                 #print(ballpos, blk)

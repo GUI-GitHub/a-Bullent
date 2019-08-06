@@ -15,13 +15,11 @@ class BallGroup():
     def add_demo(self, speed, pos):
         self.add(Ball(speed, pos=pos))
 
-
-    def move(self, bx, blocks, props):
+    def move(self, bx, blocks):
         for ball in self.balls:
-            ball.move(bx, blocks, props)#移动单个小球
+            ball.move(bx, blocks)#移动单个小球
 
             screen.blit(ball.image, ball.rect)
-            #f1.render_to(screen, ball.rect[:2], str(ball.speed),fgcolor=(255,255,255))
             # 掉入后删除小球
             #print(ball.rect,ball.collide_wx)
             if ball.rect.y > HEIGHT - ball.rect.h:# or ball.rect.x <= -ball.rect.w or ball.rect.x >= WIDTH:

@@ -19,7 +19,7 @@ class Prop:
         self.rect = self.rect.move((0, pv))
 
         #道具事件
-        if (bx - 30 - self.rect.w*0.5 <= self.rect.centerx <= bx + 30 + self.rect.w*0.5) and (self.rect.y >= 350 - self.rect.h):
+        if (bx - 30 <= self.rect.centerx <= bx + 30) and (self.rect.y >= 350 - self.rect.h):
             if self.type == 1:
                 ballg.add_demo(tuple(math.Vector2(1, 1).normalize()*bv), pos=(bx-4, 350-16))
                 ballg.add_demo(tuple(math.Vector2(-1, 1).normalize() * bv), pos=(bx - 4, 350 - 16))
