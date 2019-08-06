@@ -1,9 +1,10 @@
-import pygame,sys
+import pygame,sys,os
 from pygame.locals import *
+from setting.settings import *
 
 pygame.init()
 
-window_Surface = pygame.display.set_mode((255, 255), 0, 32)
+window_Surface = pygame.display.set_mode((WIDTH, HEIGHT), 0, 32)
 pygame.display.set_caption('start')
 def run():
     #RBG这里是调节颜色的
@@ -38,6 +39,8 @@ def run():
                       text_Rect.width + 40,
                       text_Rect.height + 40))
 
+    window_Surface.blit(pygame.image.load(os.path.join(os.path.dirname(os.path.dirname(__file__)), "static/set_ico.png")),(0,0))
+    f2.render_to(window_Surface,(45,5),"set")
     pixArry = pygame.PixelArray(window_Surface)
     pixArry[230][180] = BLACK
     del pixArry
@@ -47,7 +50,11 @@ def run():
         for event in pygame.event.get():
             if event.type == MOUSEBUTTONUP:
                 #如果要加第三个页面这需要在这里判断判断鼠标的点击位置。然后通过位置做判断
-                return 0
+                if event.pos[0] in range(90) and event.pos[1] in range(45):
+                    import core.set
+                    core.set.run()
+                else:
+                    return 0
             elif event.type == QUIT:
                 pygame.quit()
                 sys.exit()

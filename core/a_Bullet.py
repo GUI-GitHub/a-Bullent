@@ -7,11 +7,11 @@ def run():
     gtime=time.Clock()#游戏时间设置
     bx = 150#设置开始时板的位置
     ballg = BallGroup.BallGroup()
-    blocks = Blocks.Blocks.generator("rect", height=2, width=20,dpos=(0,50))#方块生成
-    #blocks.adds(Blocks.Blocks.generator("rect", height=2, width=20,dpos=(0,370)))
+    blocks = Blocks.Blocks.generator("rect", height=5, width=19,dpos=(0,50),size=(9,9))#方块生成
+    blocks.adds(Blocks.Blocks.generator("rect", height=2, width=2,dpos=(0,370),size=(90,9)))
     while 1:
         gtime.tick(t)
-        screen.fill((0, 0, 0))
+        screen.fill((255, 255, 255))
         for i in event.get():
             if i.type == QUIT:
                 exit(0)
@@ -22,15 +22,20 @@ def run():
             if i.type == MOUSEBUTTONDOWN or (i.type == KEYDOWN and i.key == K_SPACE):
                 #发射小球
                 if not shooted:
-                    a = (math.Vector2(i.pos)-math.Vector2(150,350)).normalize()*bv
-                    ballg.add(Ball.Ball(tuple(a),pos=(bx-4,350-16)))
+                    a = (math.Vector2(i.pos)-math.Vector2(150, 350)).normalize()*bv
+                    ballg.add(Ball.Ball(tuple(a), pos=(bx-4, 350-16)))
                     shooted = 1
 
         Rect.Rect.rect(screen, bx, 350)#画出板
         blocks.draw()#画出方块
         ballg.move(bx, blocks)#移动所有小球并画出
-        if len(blocks.blocks)==0:
+
+        if len(blocks.blocks) == 0: #成功
             win.play()
+            print("win")
+            break
+
+
         display.flip()
         display.update()
 
