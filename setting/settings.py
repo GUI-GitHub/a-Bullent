@@ -14,11 +14,13 @@ pv = 1#道具下落速度
 
 #init
 init()
-screen = display.set_mode([WIDTH, HEIGHT], 0, 32)
+screen = display.set_mode([WIDTH, HEIGHT], 0, 32, OPENGLBLIT)
 display.set_caption("game")
+print(dir(screen))
 screen.fill((0, 0, 0))
 f1 = pygame.freetype.Font("C:\\Windows\\Fonts\\mvboli.ttf", 10)
 f2 = pygame.freetype.Font("C:\\Windows\\Fonts\\mvboli.ttf", 30)
+f3 = pygame.freetype.Font("C:\\Windows\\Fonts\\mvboli.ttf", 50)
 
 
 

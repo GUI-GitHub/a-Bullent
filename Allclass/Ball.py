@@ -29,7 +29,7 @@ class Ball:
         # 碰方块反弹
         for blk in blocks.blocks:
 
-            if self.rect.x < blk.pos[0] + blk.size[0] and self.rect.x + self.rect.w > blk.pos[0] and self.rect.y < blk.pos[1] + blk.size[1] and self.rect.y + self.rect.h > blk.pos[1]:
+            if blk.rect.colliderect(self): #self.rect.x < blk.pos[0] + blk.size[0] and self.rect.x + self.rect.w > blk.pos[0] and self.rect.y < blk.pos[1] + blk.size[1] and self.rect.y + self.rect.h > blk.pos[1]:
                 bam.play()
 
                 if (self.rect.y <= blk.pos[1] + blk.size[1] or self.rect.y + self.rect.h >= blk.pos[1]):  # and not self.inb:
@@ -54,10 +54,8 @@ class Ball:
 
 
         # 碰板反弹
-        if (bx - 30 <= self.rect.centerx <= bx + 30) and (362 >= self.rect.y >= 350 - self.rect[3]):
+        if Rect(bx - 30, 350, 60, 12).colliderect(self):
             self.speed = (math.Vector2(self.rect.centerx, self.rect.centery) - math.Vector2(bx, 366)).normalize() * bv
-            # print(sqrt(self.speed[0] ** 2 + self.speed[1] ** 2))
-            # print(int(self.speed[0]), int(self.speed[1]))
             tern.play()
             # self.speed[1] *= -1
 

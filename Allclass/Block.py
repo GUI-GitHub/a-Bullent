@@ -1,13 +1,14 @@
 from setting.settings import *
 
 
-class Block:
+class Block(sprite.Sprite):
     def __init__(self, pos, type, size=(20, 20), count=1):
         self.pos = pos
         self.type = type
         self.size = size
         self.count = count
         self.color = (127, 127, 127)
+        self.rect = Rect(pos, size)
 
     def draw(self):
         if 0 < self.type*16 < 255:
@@ -18,4 +19,4 @@ class Block:
         f1.render_to(screen, (self.pos[0]+3, self.pos[1]), str(self.type))
 
     def __repr__(self):
-        return "pos:%s,color:%s,size:%s,type:%s"%(self.pos, self.color, self.size, self.type)
+        return "pos:%s,color:%s,size:%s,type:%s" % (self.pos, self.color, self.size, self.type)
