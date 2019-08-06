@@ -1,5 +1,5 @@
 from setting.settings import *
-from Allclass import BallGroup,Blocks,Ball,Rect
+from Allclass import BallGroup,Blocks,Ball,Rect,Props
 
 def run():
     shooted=0
@@ -7,8 +7,9 @@ def run():
     gtime=time.Clock()#游戏时间设置
     bx = 150#设置开始时板的位置
     ballg = BallGroup.BallGroup()
-    blocks = Blocks.Blocks.generator("rect", height=5, width=19,dpos=(0,50),size=(9,9))#方块生成
-    blocks.adds(Blocks.Blocks.generator("rect", height=2, width=2,dpos=(0,370),size=(90,9)))
+    props = Props.Props([])
+    blocks = Blocks.Blocks.generator("rect", height=5, width=19, dpos=(0, 50), size=(9, 9))#方块生成
+    blocks.adds(Blocks.Blocks.generator("rect", height=2, width=2, dpos=(0, 370), size=(90, 9)))
     while 1:
         gtime.tick(t)
         screen.fill((255, 255, 255))
@@ -27,8 +28,9 @@ def run():
                     shooted = 1
 
         Rect.Rect.rect(screen, bx, 350)#画出板
+        props.draw(bx, ballg)
         blocks.draw()#画出方块
-        ballg.move(bx, blocks)#移动所有小球并画出
+        ballg.move(bx, blocks,props)#移动所有小球并画出
 
         if len(blocks.blocks) == 0: #成功
             win.play()

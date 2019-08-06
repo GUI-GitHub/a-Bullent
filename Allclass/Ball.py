@@ -1,6 +1,8 @@
 from setting.settings import *
-import os
-class Ball():
+from Allclass.Prop import *
+
+
+class Ball:
     def __init__(self, speed, pos=(0, 0)):
         image_path = os.path.join(os.path.dirname(os.path.dirname(__file__)),"static/c.png")
         self.image = image.load(image_path)
@@ -12,11 +14,8 @@ class Ball():
         self.collide_wx = False
         self.collide_wy = False
 
-    def move(self, bx, blocks):
+    def move(self, bx, blocks, props):
         self.rect.x += self.speed[0]
-
-
-
 
         # 碰壁反弹
         if self.rect.x <= 0 or self.rect.x >= WIDTH - self.rect.w:
@@ -30,25 +29,18 @@ class Ball():
         # 碰方块反弹
         for blk in blocks.blocks:
 
-            rblk = (blk.pos[0]+blk.size[0] * 0.5, blk.pos[1] + blk.size[1] * 0.5)
-
-            ballpos = self.rect[0:2]
-            rball=(self.rect.centerx, self.rect.centery)
-
-            if self.rect.x < blk.pos[0] + blk.size[0] and ballpos[0] + self.rect.w > blk.pos[0] and self.rect.y < blk.pos[1] + blk.size[1] and self.rect.y + self.rect.h > blk.pos[1]:
+            if self.rect.x < blk.pos[0] + blk.size[0] and self.rect.x + self.rect.w > blk.pos[0] and self.rect.y < blk.pos[1] + blk.size[1] and self.rect.y + self.rect.h > blk.pos[1]:
                 bam.play()
 
-                if (ballpos[1] <= blk.pos[1] + blk.size[1] or ballpos[1] + self.rect.h >= blk.pos[1]):  # and not self.inb:
+                if (self.rect.y <= blk.pos[1] + blk.size[1] or self.rect.y + self.rect.h >= blk.pos[1]):  # and not self.inb:
                     #碰左右壁
                     self.speed[0] = -self.speed[0]
 
-                if (ballpos[0] <= blk.pos[0] + blk.size[0] or ballpos[0] + self.rect.w >= blk.pos[0])and not self.collide_b:#and not self.inb:
+                if (self.rect.x <= blk.pos[0] + blk.size[0] or self.rect.x + self.rect.w >= blk.pos[0])and not self.collide_b:#and not self.inb:
                     #碰上下壁
                     self.speed[1] = -self.speed[1]
-
-
-
-
+                if blk.type:
+                    props.add(Prop(blk.type, blk.pos))
 
                 #  if not blk.type==4:
                 #print(ballpos, blk)

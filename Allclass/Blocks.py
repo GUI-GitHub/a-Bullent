@@ -31,6 +31,6 @@ class Blocks:
         if mode == "rect":
             for i in range(kw["height"]):
                 for j in range(kw["width"]):
-                    blocks.append(Block((j*size[0]+dpos[0], i*size[1]+dpos[1]), 1, size=size))
+                    blocks.append(Block((j*size[0]+dpos[0], i*size[1]+dpos[1]), random.randint(0,2), size=size))
         #print(blocks)
         return Blocks(blocks)

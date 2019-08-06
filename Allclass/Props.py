@@ -1,5 +1,6 @@
 from setting.settings import *
 
+
 class Props:
     def __init__(self, props):
         self.props = []
@@ -12,5 +13,5 @@ class Props:
         for prop in self.props:
             prop.move(bx, ballg)
             screen.blit(prop.image, prop.rect)
-            if (bx - 30 <= self.rect.centerx <= bx + 30) and (self.rect.y >= 350 - self.rect.h):
+            if (bx - 30 <= prop.rect.centerx <= bx + 30) and (prop.rect.y >= 350 - prop.rect.h):
                 self.props.remove(prop)
