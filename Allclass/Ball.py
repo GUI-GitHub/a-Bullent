@@ -28,7 +28,6 @@ class Ball:
             self.speed[0] = bv
         # 碰方块反弹
         for blk in blocks.blocks:
-
             if blk.rect.colliderect(self): #self.rect.x < blk.pos[0] + blk.size[0] and self.rect.x + self.rect.w > blk.pos[0] and self.rect.y < blk.pos[1] + blk.size[1] and self.rect.y + self.rect.h > blk.pos[1]:
                 bam.play()
 
@@ -44,9 +43,11 @@ class Ball:
                 #  if not blk.type==4:
                 #print(ballpos, blk)
                 if not self.collide_b:
+
                     blk.count = blk.count - 1
+                    break
                 # blocks.blocks.remove(blk)
-                break
+
                 self.collide_b = True
             else:
                 self.collide_b = False

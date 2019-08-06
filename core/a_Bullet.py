@@ -10,7 +10,7 @@ def run():
     bx = 150#设置开始时板的位置
     ballg = BallGroup.BallGroup()
     props = Props.Props([])
-    blocks = Blocks.Blocks.generator("rect", height=5, width=33, dpos=(0, 50), size=(9, 9))#方块生成
+    blocks = Blocks.Blocks.generator("rect", height=5, width=33, dpos=(0, 50), size=(7, 7))#方块生成
 
     while 1:
         gtime.tick(t)
@@ -30,9 +30,13 @@ def run():
                     shooted = 1
 
         if len(blocks.blocks) == 0: #成功
-            win.play()
-            print("win")
-            screen.fill(127, 127, 127)
+
+            f3.render_to(screen, (50, 100), "用时"+str(floor(tn/9)/10)+"秒")
+            if shooted:
+                win.play()
+                shooted = not shooted
+
+            #screen.fill((127, 127, 127, 127))
         else:
             Rect.Rect.rect(screen, bx, 350)  # 画出板
             props.draw(bx, ballg)

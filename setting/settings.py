@@ -20,7 +20,7 @@ print(dir(screen))
 screen.fill((0, 0, 0))
 f1 = pygame.freetype.Font("C:\\Windows\\Fonts\\mvboli.ttf", 10)
 f2 = pygame.freetype.Font("C:\\Windows\\Fonts\\mvboli.ttf", 30)
-f3 = pygame.freetype.Font("C:\\Windows\\Fonts\\mvboli.ttf", 50)
+f3 = pygame.freetype.Font("C:\\Windows\\Fonts\\msyh.ttc", 30)
 
 
 
