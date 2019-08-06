@@ -30,13 +30,15 @@ sound_path1 = os.path.join(os.path.dirname(os.path.dirname(__file__)), "static/b
 sound_path2 = os.path.join(os.path.dirname(os.path.dirname(__file__)), "static/tern.wav")
 sound_path3 = os.path.join(os.path.dirname(os.path.dirname(__file__)), "static/los.wav")
 sound_path4 = os.path.join(os.path.dirname(os.path.dirname(__file__)), "static/win.wav")
-sound_path5 = os.path.join(os.path.dirname(os.path.dirname(__file__)), "static/bo.wav")
+sound_path5 = os.path.join(os.path.dirname(os.path.dirname(__file__)), "static/super.wav")
+sound_path6 = os.path.join(os.path.dirname(os.path.dirname(__file__)), "static/bom.wav")
 
 mixer.init()
 bam = mixer.Sound(sound_path1)
 tern = mixer.Sound(sound_path2)
 los = mixer.Sound(sound_path3)
 win = mixer.Sound(sound_path4)
-bo = mixer.Sound(sound_path5)
+super = mixer.Sound(sound_path5)
+bom = mixer.Sound(sound_path6)
 
 

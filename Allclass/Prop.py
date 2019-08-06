@@ -21,9 +21,11 @@ class Prop:
         #道具事件
         if (bx - 30 <= self.rect.centerx <= bx + 30) and (self.rect.y >= 350 - self.rect.h):
             if self.type == 1:
+                bom.play()
                 ballg.add_demo(tuple(math.Vector2(1, 1).normalize()*bv), pos=(bx-4, 350-16))
                 ballg.add_demo(tuple(math.Vector2(-1, 1).normalize() * bv), pos=(bx - 4, 350 - 16))
             elif self.type == 2:
+                super.play()
                 add = []
                 for ball in ballg.balls:
                     v1 = math.Vector2(ball.speed).rotate(45).normalize()*bv
