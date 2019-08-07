@@ -17,6 +17,7 @@ class Blocks:
                 self.blocks.remove(block)
                 if block.type:
                     props.add(Prop(block.type, block.pos))
+                    print("prop add")
 
     @staticmethod
     def generator(mode, *arg, **kw):
@@ -33,8 +34,8 @@ class Blocks:
         if mode == "rect":
             for i in range(kw["height"]):
                 for j in range(kw["width"]):
-                    r = random.randint(0, 15)
-                    if r == 1 or r == 2:
+                    r = random.randint(0, 3)
+                    if r == 1 or r == 2 or r == 3:
                         blocks.append(Block((j*size[0]+dpos[0], i*size[1]+dpos[1]), r, size=size))
                     else:
                         blocks.append(Block((j * size[0] + dpos[0], i * size[1] + dpos[1]), 0, size=size))
@@ -49,13 +50,13 @@ class Blocks:
 
         for y in range(len(m)):
             for x in range(len(m[0])):
-                if m[x][y] == (255, 255, 255):
+                if not m[x][y] == (255, 255, 255):
                     color = m[x][y]
                     size = (8, 8)
                     pos = (x*10, y*10+18)
 
                     r = random.randint(0, 20)
-                    if r == 1 or r == 2:
+                    if r == 1 or r == 2 or r == 3:
                         blocks.append(Block(pos, r, size=size, color=color))
                     else:
                         blocks.append(Block(pos, 0, size=size, color=color))

@@ -21,7 +21,7 @@ def winv(tn):
         d.play()
         time.delay(100)
         display.update()
-    while mixer.get_busy():
+    while not mixer.get_busy():
         win.play()
         break
 

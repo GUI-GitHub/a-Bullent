@@ -43,7 +43,7 @@ def run():
                 #break
             else:
                 Rect.Rect.rect(screen, bx, 350)  # 画出板
-                props.draw(bx, ballg)
+                props.draw(bx, ballg, blood)
                 blocks.draw(props)  # 画出方块
                 ballg.move(bx, blocks)  # 移动所有小球并画出
                 blood.draw()
@@ -58,7 +58,7 @@ def run():
                 blood.num -= 1
 
 
-            print(len(ballg.balls), ballg.db)
+            #print(len(ballg.balls), ballg.db)
             display.flip()
             display.update()
 

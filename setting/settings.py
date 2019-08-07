@@ -34,7 +34,8 @@ sound_path4 = os.path.join(os.path.dirname(os.path.dirname(__file__)), "static/w
 sound_path5 = os.path.join(os.path.dirname(os.path.dirname(__file__)), "static/super.wav")
 sound_path6 = os.path.join(os.path.dirname(os.path.dirname(__file__)), "static/bom.wav")
 sound_path7 = os.path.join(os.path.dirname(os.path.dirname(__file__)), "static/nle.wav")
-sound_path8 = os.path.join(os.path.dirname(os.path.dirname(__file__)), "static/nle.wav")
+sound_path8 = os.path.join(os.path.dirname(os.path.dirname(__file__)), "static/d.wav")
+sound_path9 = os.path.join(os.path.dirname(os.path.dirname(__file__)), "static/bon.wav")
 
 
 mixer.init()
@@ -46,3 +47,4 @@ super = mixer.Sound(sound_path5)
 bom = mixer.Sound(sound_path6)
 nle = mixer.Sound(sound_path7)
 d = mixer.Sound(sound_path8)
+bon = mixer.Sound(sound_path9)
