@@ -14,6 +14,7 @@ class Prop:
             self.image = 0
         self.rect = self.image.get_rect()
         self.rect.move_ip(pos)
+        nle.play()
 
     def move(self, bx, ballg):
         self.rect = self.rect.move((0, pv))

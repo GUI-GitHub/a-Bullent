@@ -2,6 +2,11 @@ import pygame,sys,os
 from pygame.locals import *
 from setting.settings import *
 
+import Allclass.window as win
+
+win.winv(29090)
+
+
 pygame.init()
 
 window_Surface = pygame.display.set_mode((WIDTH, HEIGHT), 0, 32)

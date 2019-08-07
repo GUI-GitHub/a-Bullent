@@ -5,6 +5,7 @@ class BallGroup():
 
     def __init__(self, balls=[]):
         self.balls = balls#所有小球
+        self.db = 0
 
     def add(self, ball):
         self.balls.append(ball)
@@ -22,12 +23,14 @@ class BallGroup():
             screen.blit(ball.image, ball.rect)
             # 掉入后删除小球
             #print(ball.rect,ball.collide_wx)
+
+            if int(ball.speed[1]) == 0:
+                self.db += 1
             if ball.rect.y > HEIGHT - ball.rect.h:# or ball.rect.x <= -ball.rect.w or ball.rect.x >= WIDTH:
 
                 self.balls.remove(ball)
-                if len(self.balls) == 0:
-                    # 失败
-                    los.play()
+
+
 
 
     @staticmethod

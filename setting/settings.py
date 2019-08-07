@@ -13,6 +13,7 @@ t = 90#每秒执行次数
 pv = 1#道具下落速度
 
 #init
+pygame.mixer.pre_init(44100, 16, 2, 4096)
 init()
 screen = display.set_mode([WIDTH, HEIGHT], 0, 32, OPENGLBLIT)
 display.set_caption("game")
@@ -32,6 +33,9 @@ sound_path3 = os.path.join(os.path.dirname(os.path.dirname(__file__)), "static/l
 sound_path4 = os.path.join(os.path.dirname(os.path.dirname(__file__)), "static/win.wav")
 sound_path5 = os.path.join(os.path.dirname(os.path.dirname(__file__)), "static/super.wav")
 sound_path6 = os.path.join(os.path.dirname(os.path.dirname(__file__)), "static/bom.wav")
+sound_path7 = os.path.join(os.path.dirname(os.path.dirname(__file__)), "static/nle.wav")
+sound_path8 = os.path.join(os.path.dirname(os.path.dirname(__file__)), "static/nle.wav")
+
 
 mixer.init()
 bam = mixer.Sound(sound_path1)
@@ -40,5 +44,5 @@ los = mixer.Sound(sound_path3)
 win = mixer.Sound(sound_path4)
 super = mixer.Sound(sound_path5)
 bom = mixer.Sound(sound_path6)
-
-
+nle = mixer.Sound(sound_path7)
+d = mixer.Sound(sound_path8)
