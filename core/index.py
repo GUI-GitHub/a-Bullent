@@ -1,9 +1,8 @@
-import pygame,sys,os
+import pygame, sys, os
 from pygame.locals import *
 from setting.settings import *
 
 import Allclass.window as win
-
 win.winv(29090)
 
 

@@ -17,7 +17,7 @@ def winv(tn):
 
     for i in range(0, floor(tn / 9), floor(tn/9/10)):
         screen.fill((255, 255, 255))
-        f3.render_to(screen, (70, 100), "用时" + str(i/10) + "秒")
+        f3.render_to(screen, (75, 100), "用时" + str(i/10) + "秒")
         d.play()
         time.delay(100)
         display.update()
