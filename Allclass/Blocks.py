@@ -47,11 +47,17 @@ class Blocks:
     @staticmethod
     def convert(m):
         blocks = []
-
+        print(m.ndim)
         for y in range(len(m)):
             for x in range(len(m[0])):
-                if not m[x][y] == (255, 255, 255):
-                    color = m[x][y]
+                if (not m[x, y] == -1)and(not m[x,y] == 0):
+                    color = hex(4294967296+m[x, y])
+
+                    r = int(color[8:], 16)
+                    g = int(color[6:8], 16)
+                    b = int(color[4:6], 16)
+                    a = color[2:4]
+                    color = (r, g, b)
                     size = (8, 8)
                     pos = (x*10, y*10+18)
 
@@ -60,4 +66,5 @@ class Blocks:
                         blocks.append(Block(pos, r, size=size, color=color))
                     else:
                         blocks.append(Block(pos, 0, size=size, color=color))
+
         return Blocks(blocks)

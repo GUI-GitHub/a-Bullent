@@ -2,9 +2,15 @@ from setting.settings import *
 from Allclass import BallGroup, Blocks, Ball, Rect, Props, Block, Blood, window
 
 
+
 def run():
-    map = [1]
-    for level in map:
+
+    map = []
+    for file in map_files:
+
+        pixarray = PixelArray(image.load(file))
+
+
         shooted = 0
         parbegin = 0
 
@@ -15,8 +21,8 @@ def run():
         blood = Blood.Blood(3)
         ballg = BallGroup.BallGroup()
         props = Props.Props([])
-        blocks = Blocks.Blocks.generator("rect", height=5, width=33, dpos=(0, 50), size=(8, 8))#方块生成
-        #blocks = Blocks.Blocks.convert()
+        #blocks = Blocks.Blocks.generator("rect", height=5, width=33, dpos=(0, 50), size=(8, 8))#方块生成
+        blocks = Blocks.Blocks.convert(pixarray)
 
         while 1:
             gtime.tick(t)
@@ -61,5 +67,3 @@ def run():
             #print(len(ballg.balls), ballg.db)
             display.flip()
             display.update()
-
-

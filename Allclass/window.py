@@ -13,6 +13,7 @@ menu_rect.move_ip(80, 250)
 retry_rect.move_ip(130, 250)
 goon_rect.move_ip(180, 250)
 
+
 def winv(tn):
 
     for i in range(0, floor(tn / 9), floor(tn/9/10)):
