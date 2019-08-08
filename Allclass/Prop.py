@@ -25,8 +25,8 @@ class Prop:
         if Rect(bx - 40, 500, 80, 15).colliderect(self):
             if self.type == 1:
                 bom.play()
-                ballg.add_demo(tuple(math.Vector2(1, 1).normalize()*bv), pos=(bx-4, 350-16))
-                ballg.add_demo(tuple(math.Vector2(-1, 1).normalize() * bv), pos=(bx - 4, 350 - 16))
+                ballg.add_demo(tuple(math.Vector2(1, 1).normalize()*bv), pos=(bx-4, 500-16))
+                ballg.add_demo(tuple(math.Vector2(-1, 1).normalize() * bv), pos=(bx - 4, 500 - 16))
             elif self.type == 2:
                 super.play()
                 add = []

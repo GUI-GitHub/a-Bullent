@@ -1,10 +1,10 @@
 from setting.settings import *
 from Allclass.Prop import *
-
+image_path = os.path.join(os.path.dirname(os.path.dirname(__file__)),"static/c.png")
 
 class Ball:
     def __init__(self, speed, pos=(0, 0)):
-        image_path = os.path.join(os.path.dirname(os.path.dirname(__file__)),"static/c.png")
+
         self.image = image.load(image_path)
         self.rect = self.image.get_rect()
         self.rect.x = pos[0]
@@ -56,7 +56,7 @@ class Ball:
 
         # 碰板反弹
         if Rect(bx - 40, 500, 80, 15).colliderect(self):
-            self.speed = (math.Vector2(self.rect.centerx, -self.rect.centery) - math.Vector2(bx, 366)).normalize() * bv
+            self.speed = (math.Vector2(self.rect.centerx, -self.rect.centery) - math.Vector2(bx, 507)).normalize() * bv
             tern.play()
             # self.speed[1] *= -1
 
