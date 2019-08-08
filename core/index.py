@@ -2,8 +2,10 @@ import pygame, sys, os
 from pygame.locals import *
 from setting.settings import *
 import Allclass.window as win
+import core.a_Bullet as game
+import random
 
-win.fail()
+#win.fail()
 
 window_Surface = pygame.display.set_mode((WIDTH, HEIGHT), 0, 32)
 pygame.display.set_caption('start')
@@ -65,7 +67,7 @@ def run():
                 # 如果要加第三个页面这需要在这里判断判断鼠标的点击位置。然后通过位置做判断
                 if Rect(text_Rect.left - 20, text_Rect.top - 20, text_Rect.width + 40,
                         text_Rect.height + 40).collidepoint(event.pos):
-                    pass
+                    game.run(random.choice(map_files))
                 elif Rect(menu_Rect.left - 20, menu_Rect.top - 20, menu_Rect.width + 40,
                           menu_Rect.height + 40).collidepoint(event.pos):
                     pass

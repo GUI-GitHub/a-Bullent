@@ -13,5 +13,5 @@ class Props:
         for prop in self.props:
             prop.move(bx, ballg, blood)
             screen.blit(prop.image, prop.rect)
-            if ((bx - 30 <= prop.rect.centerx <= bx + 30) and (prop.rect.y >= 350 - prop.rect.h)) or prop.rect.y > 400:
+            if (Rect(bx-40, 500, 80, 15).colliderect(prop.rect)) or prop.rect.y > HEIGHT:
                 self.props.remove(prop)

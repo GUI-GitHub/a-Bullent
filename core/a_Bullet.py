@@ -45,14 +45,14 @@ def run(file):
                     #发射小球
                     if not shooted:
                         a = (math.Vector2(i.pos)-math.Vector2(150, 350)).normalize()*bv
-                        ballg.add(Ball.Ball(tuple(a), pos=(bx-4, 350-16)))
+                        ballg.add(Ball.Ball(tuple(a), pos=(bx-4, 500-16)))
                         shooted = 1
                         parbegin = 1
 
             if len(blocks.blocks) == 0: #成功
                return 1
             else:
-                Rect.Rect.rect(screen, bx, 450)  # 画出板
+                Rect.Rect.rect(screen, bx, 500)  # 画出板
                 props.draw(bx, ballg, blood)
                 blocks.draw(props)  # 画出方块
                 ballg.move(bx, blocks)  # 移动所有小球并画出

@@ -55,8 +55,8 @@ class Ball:
 
 
         # 碰板反弹
-        if Rect(bx - 30, 350, 60, 12).colliderect(self):
-            self.speed = (math.Vector2(self.rect.centerx, self.rect.centery) - math.Vector2(bx, 366)).normalize() * bv
+        if Rect(bx - 40, 500, 80, 15).colliderect(self):
+            self.speed = (math.Vector2(self.rect.centerx, -self.rect.centery) - math.Vector2(bx, 366)).normalize() * bv
             tern.play()
             # self.speed[1] *= -1
 

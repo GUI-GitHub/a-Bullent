@@ -1,6 +1,7 @@
 from setting.settings import *
 from Allclass.BallGroup import *
 
+
 class Prop:
     def __init__(self, type, pos):
         self.type = type
@@ -21,7 +22,7 @@ class Prop:
         self.rect = self.rect.move((0, pv))
 
         #道具事件
-        if (bx - 30 <= self.rect.centerx <= bx + 30) and (self.rect.y >= 350 - self.rect.h):
+        if Rect(bx - 40, 500, 80, 15).colliderect(self):
             if self.type == 1:
                 bom.play()
                 ballg.add_demo(tuple(math.Vector2(1, 1).normalize()*bv), pos=(bx-4, 350-16))
