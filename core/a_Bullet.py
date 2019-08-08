@@ -3,13 +3,20 @@ from Allclass import BallGroup, Blocks, Ball, Rect, Props, Block, Blood, window
 
 
 
-def run():
 
-    map = []
-    for file in map_files:
 
+
+
+
+
+
+
+
+
+
+def run(file):
+    if 1:
         pixarray = PixelArray(image.load(file))
-
 
         shooted = 0
         parbegin = 0
@@ -17,7 +24,7 @@ def run():
         tn = 0
 
         gtime = time.Clock()#游戏时间设置
-        bx = 150#设置开始时板的位置
+        bx = screen_rect.centerx#设置开始时板的位置
         blood = Blood.Blood(3)
         ballg = BallGroup.BallGroup()
         props = Props.Props([])
@@ -43,12 +50,9 @@ def run():
                         parbegin = 1
 
             if len(blocks.blocks) == 0: #成功
-
-                window.winv(tn)
-                #time.delay(1000)
-                #break
+               return 1
             else:
-                Rect.Rect.rect(screen, bx, 350)  # 画出板
+                Rect.Rect.rect(screen, bx, 450)  # 画出板
                 props.draw(bx, ballg, blood)
                 blocks.draw(props)  # 画出方块
                 ballg.move(bx, blocks)  # 移动所有小球并画出
@@ -61,6 +65,7 @@ def run():
                 shooted = 0
                 if not blood.num:
                     parbegin = 0
+                    return 0
                 blood.num -= 1
 
 

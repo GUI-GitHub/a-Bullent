@@ -5,9 +5,10 @@ import random
 from math import *
 
 #define
+from pygame._freetype import Font
 
-HEIGHT = 400
-WIDTH = 300
+HEIGHT = 600
+WIDTH = 400
 bv = 3#小球速度
 t = 90#每秒执行次数
 pv = 1#道具下落速度
@@ -16,10 +17,12 @@ pv = 1#道具下落速度
 pygame.mixer.pre_init(44100, 16, 2, 4096)
 init()
 screen = display.set_mode([WIDTH, HEIGHT], 0, 32, OPENGLBLIT)
+screen.fill((255, 255, 255))
+screen_rect = screen.get_rect()
 display.set_caption("game")
 
 f1 = pygame.freetype.Font("C:\\Windows\\Fonts\\mvboli.ttf", 10)
-f2 = pygame.freetype.Font("C:\\Windows\\Fonts\\mvboli.ttf", 30)
+f2 = pygame.freetype.Font("C:\\Windows\\Fonts\\mvboli.ttf", 70)
 f3 = pygame.freetype.Font("C:\\Windows\\Fonts\\msyh.ttc", 30)
 
 sound_path1 = os.path.join(os.path.dirname(os.path.dirname(__file__)), "static/bam.wav")
@@ -50,5 +53,5 @@ for dir_path, file, filenames in os.walk(map_path):
         if filename.endswith(".png"):
             path = os.path.join(dir_path, filename)
             map_files.append(path)
-        print(path)
-print(map_files)
+        print("检测到地图", filename[:-4])
+
