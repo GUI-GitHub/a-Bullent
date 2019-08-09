@@ -2,18 +2,6 @@ from setting.settings import *
 from Allclass import BallGroup, Blocks, Ball, Rect, Props, Block, Blood, window
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 def run(file):
     if 1:
         pixarray = PixelArray(image.load(file))
@@ -50,7 +38,7 @@ def run(file):
                         parbegin = 1
 
             if len(blocks.blocks) == 0: #成功
-               return 1
+               return tn
             else:
                 Rect.Rect.rect(screen, bx, 500)  # 画出板
                 props.draw(bx, ballg, blood)
@@ -67,8 +55,6 @@ def run(file):
                     parbegin = 0
                     return 0
                 blood.num -= 1
-
-
             #print(len(ballg.balls), ballg.db)
             display.flip()
             display.update()

@@ -61,16 +61,35 @@ def run():
     window_Surface.blit(menu, menu_Rect)
 
     pygame.display.update()
-    while True:
+    level = 0
+
+    def mainloop(tt):
+        sta = win.judge(tt)
+        if sta == 0:
+            mainloop(game.run(map_files[win.menu()]))
+        if sta == 1:
+            mainloop()
+
+
+
+    while 1:
         for event in pygame.event.get():
             if event.type == MOUSEBUTTONUP:
                 # 如果要加第三个页面这需要在这里判断判断鼠标的点击位置。然后通过位置做判断
                 if Rect(text_Rect.left - 20, text_Rect.top - 20, text_Rect.width + 40,
-                        text_Rect.height + 40).collidepoint(event.pos):
-                    game.run(random.choice(map_files))
+                        text_Rect.height [w+ 40).collidepoint(event.pos):
+                    tt = game.run(random.choice(map_files))
                 elif Rect(menu_Rect.left - 20, menu_Rect.top - 20, menu_Rect.width + 40,
                           menu_Rect.height + 40).collidepoint(event.pos):
-                    pass
+                    level =
+                    tt = game.run(map_filesin.menus()])
+                mainloop(tt)
+
+                break
             elif event.type == QUIT:
                 pygame.quit()
                 sys.exit()
+
+
+
+

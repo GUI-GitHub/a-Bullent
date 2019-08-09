@@ -73,6 +73,13 @@ def fail():
         display.update()
 
 
+def judge(tn):
+    if tn:
+        return winv(tn)
+    else:
+        return fail()
+
+
 def menus():
     mask = image.load(os.path.join(os.path.dirname(os.path.dirname(__file__)), "static/menu_map_mask.png"))
     map_dict = []
